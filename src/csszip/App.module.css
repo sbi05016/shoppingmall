@@ -1,6 +1,5 @@
-.App {
-  text-align: center;
-}
+
+
 
 .App-logo {
   height: 40vmin;
@@ -12,7 +11,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.App {
+  text-align: relative;
+  z-index: 999;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -35,4 +37,15 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.username{
+  color: white; 
+}
+
+#top{
+  z-index: 100;
+}
+.top-navbar-container{
+  z-index: 100;
 }

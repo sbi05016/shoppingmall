@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+.plusbtn{
+
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+}
+
+.cartTitle{
+  text-align: center;
+}
+
+.qwebtn{
+  display: table; margin-left: auto; margin-right: auto; 
+}
+
+.sort-btn{
+  display: table; margin-left: auto;
+  margin-right: 10%;
+}
