@@ -9,7 +9,8 @@ import { Nav, Navbar, Container } from 'react-bootstrap';
 import {CSSTransition} from "react-transition-group"
 import classnames from 'classnames/bind'
 import { useSelector,useDispatch } from 'react-redux';
-import {increase, order} from '../store/buyListStore.js'
+import {increase, order} from '../store/buyListStore.js';
+
 
 
 const st = classnames.bind(styles)
@@ -47,10 +48,9 @@ const DetailPage=(props)=>{
     let updateData = localStorage.getItem('data')
     updateData = JSON.parse(updateData)
     updateData.push(finded)
-    updateData = new Set(updateData)
-    updateData = Array.from(updateData)
     localStorage.setItem('data',JSON.stringify(updateData))
   },[])
+  
   
 //----------------------------------------------------------
     return(

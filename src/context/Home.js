@@ -1,13 +1,14 @@
-import {GoodsCpn , TabContent,ErrorCpn} from '../components/cpn.js'
-import { Outlet, useParams } from 'react-router-dom'
+import {GoodsCpn , TabContent,ErrorCpn} from '../components/cpn.js';
+import { Outlet, useParams } from 'react-router-dom';
 import {uesParams} from "react-router-dom";
 import styles from '../csszip/context.module.css';
-import classnames from 'classnames/bind'
+import classnames from 'classnames/bind';
 import { useEffect, useState } from 'react';
-import axios from 'axios'
-import {Loading} from '../spinner.js'
+import axios from 'axios';
+import {Loading} from '../spinner.js';
 import { Nav, Navbar, Container } from 'react-bootstrap';
-import {CSSTransition} from "react-transition-group"
+import {CSSTransition} from "react-transition-group";
+import _ from 'lodash';
 
 
 
@@ -16,14 +17,14 @@ const st = classnames.bind(styles)
 const HomePage=({shoes,setShoes})=>{
 
   let [buttonclick,buttonSetclick] = useState(0);
-
-  
+  let localStoragedata = ''
 
   useEffect(()=>{
-    if(localStorage.data == undefined){
-    localStorage.setItem('data',JSON.stringify( [] ))
-  
-    }if(localStorage.data.length<2){
+    if(localStorage.data == 'undefined'){
+      localStorage.removeItem('data')===undefined?localStorage.setItem('data',JSON.stringify( [] )):
+      localStorage.removeItem('data')
+      localStorage.setItem('data',JSON.stringify( [] ))}       
+    if(localStorage.data.length<2){
     localStorage.setItem('data',JSON.stringify( [] ))
   }
   else{console.log('')}
@@ -32,8 +33,8 @@ const HomePage=({shoes,setShoes})=>{
   let itemList = localStorage.getItem('data')
   itemList = JSON.parse(itemList)
   
-  return(
   
+  return(
   <div>
     
     <div className='main-banner'></div>
@@ -41,12 +42,15 @@ const HomePage=({shoes,setShoes})=>{
         <h3 className={st('sidebar-title')}>최근 본 상품</h3>   
     </div>
     <div className={st('sidebar')}>
-          {localStorage.data!=undefined?itemList.map((item,i)=>  
+      
+          {localStorage.data!=undefined?
+            (itemList=_.uniqBy(itemList, "id"),
+            itemList.map((item,i)=>  
             <div className={st('itemList')} key={item.id}>        
               <p>{item.title}</p>
               <p>{item.price}</p>
             </div>
-          )
+          ))
         :localStorage.setItem('data',JSON.stringify([]))}    
     </div>
 

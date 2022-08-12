@@ -44,16 +44,20 @@ function App() {
       <Routes>       
         <Route path='/' element={<HomePage shoes={shoes} setShoes={setShoes} />}/>
         <Route path="/detail/:id" element={
-        <Suspense fallback={
-        <div>로딩중임</div>}><DetailPage shoes={shoes}/>
-        </Suspense>}/>
-        
+        <Suspense fallback={<div>로딩중임</div>}>
+          <DetailPage shoes={shoes}/>
+        </Suspense>
+      }/>   
         <Route path='/about' element={<AboutPage/>}>
           <Route path='member' element={<div>멤버임</div>}/>
           <Route path='location' element={<div>깔깔</div>}/>
         </Route>
-        <Route path='/cart' element={<CartPage/>}/>
-        <Route path='*' element={<div>없는 페이지</div>}/>
+        
+         <Route path='/cart' element={<Suspense fallback={<div>로딩중임</div>}>
+          <CartPage/>
+          </Suspense>}/>
+        
+        <Route path='/*' element={<div>없는 페이지</div>}/>
       </Routes> 
     
     </div>

@@ -5,6 +5,7 @@ import classNames from "classnames/bind"
 import styles from "../csszip/Cart.module.css"
 import {ageCount} from "../store/userStore.js"
 import {buyListDeSort,deleteOrder ,buyListSort, increase} from "../store/buyListStore.js"
+import { useEffect,useRef } from "react"
 
 const cn = classNames.bind(styles)
 
@@ -14,9 +15,10 @@ const CartPage=()=>{
   let buyList = useSelector((state)=>state.buyList);
   let dispatch = useDispatch()
   let [sorted,setSorted] = useState(true)
+ 
   return(
     <div>
-    
+
     <h4 className={cn('cartTitle')}>{user.name}의 장바구니 <br/> 그의 나이는 {user.age}</h4>
     <button onClick={()=>{dispatch(ageCount())}} className={cn('qwebtn') }>button</button>
     <button onClick={()=>{return(
